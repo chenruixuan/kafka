@@ -1,0 +1,16 @@
+{
+  "name": "chenruixuan/php-kafka",
+  "description": "kafka client for php",
+  "keywords": ["kafka", "php"],
+  "homepage": "https://github.com/chenruixuan/kafka",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Chenruixuan",
+      "email": "www@chenruixuan.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {"Chenruixuan\\Kafka\\": "src"}
+  }
+}
