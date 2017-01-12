@@ -1,7 +1,7 @@
 {
   "name": "chenruixuan/php-kafka",
   "description": "kafka client for php",
-  "keywords": ["kafka", "php"],
+  "keywords": ["kafka", "php","php kafka","php-kafka"],
   "homepage": "https://github.com/chenruixuan/kafka",
   "license": "MIT",
   "authors": [
@@ -12,5 +12,8 @@
   ],
   "autoload": {
     "psr-4": {"Chenruixuan\\Kafka\\": "src"}
+  },
+  "require":{
+    "php": ">=5.4.0"
   }
 }
