@@ -9,7 +9,7 @@ const KAFKA_OFFSET_BEGINNING = RD_KAFKA_OFFSET_BEGINNING;
 
 
 
-class KafKa_Consumer {
+class KafkaConsumer {
 
     protected $topic = null;
 

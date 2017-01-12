@@ -1,10 +1,12 @@
 <?php
-namespace Chenruixuan;
+namespace Chenruixuan\Kafka;
 
 // KafKa分区自动随机分配
+use Chenruixuan\Kafka\KafKaConsumer;
+use Chenruixuan\Kafka\Exception\KafkaException;
 const KAFKA_PARTITION_UA = RD_KAFKA_PARTITION_UA;
 
-class KafKa_Lite {
+class Kafka {
 
     // KafKaHostList
     protected $BrokerList = array();
@@ -43,7 +45,8 @@ class KafKa_Lite {
             }
         }
         if ((count($List) - $errTCP) == 0){
-            throw new KafKa_Exception_Base("No can use KafKa");
+
+            return new KafkaException("No can use KafKa");
         }
     }
 
@@ -52,7 +55,7 @@ class KafKa_Lite {
      * @return KafKa_Producer
      */
     public function newProducer() {
-        return new KafKa_Producer($this->BrokerList, $this->getKafKaConf(), $this->getTopicConf(), $this->Topic);
+        return new KafKaProducer($this->BrokerList, $this->getKafKaConf(), $this->getTopicConf(), $this->Topic);
     }
 
     /**
@@ -60,7 +63,7 @@ class KafKa_Lite {
      * @return KafKa_Consumer
      */
     public function newConsumer() {
-        return new KafKa_Consumer($this->BrokerList, $this->getKafKaConf(), $this->getTopicConf(), $this->Topic);
+        return new KafKaConsumer($this->BrokerList, $this->getKafKaConf(), $this->getTopicConf(), $this->Topic);
     }
 
     /**

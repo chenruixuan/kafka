@@ -1,6 +1,6 @@
 <?php
 namespace Chenruixuan\Kafka;
-class KafKa_Producer {
+class KafkaProducer {
 
     protected $topic = null;
 
