@@ -1,9 +1,15 @@
 {
   "name": "chenruixuan/php-kafka",
   "description": "kafka client for php",
-  "keywords": ["kafka", "php","php kafka","php-kafka"],
+  "keywords": [
+    "kafka",
+    "php",
+    "php kafka",
+    "php-kafka"
+  ],
   "homepage": "https://github.com/chenruixuan/kafka",
   "license": "MIT",
+  "minimum-stability": "dev",
   "authors": [
     {
       "name": "Chenruixuan",
@@ -11,9 +17,11 @@
     }
   ],
   "autoload": {
-    "psr-4": {"Chenruixuan\\Kafka\\": "src"}
+    "psr-4": {
+      "Chenruixuan\\Kafka\\": "src"
+    }
   },
-  "require":{
+  "require": {
     "php": ">=5.4.0"
   }
 }
