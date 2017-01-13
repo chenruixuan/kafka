@@ -1,4 +1,9 @@
 <?php
+/**
+ * User: chenruixuan
+ * Date: 2017/1/12 下午3:06
+ * Email: www@chenruixuan.com
+ */
 namespace Chenruixuan\Kafka;
 class KafkaProducer {
 
@@ -13,7 +18,7 @@ class KafkaProducer {
      * @param $Topic
      */
     public function __construct($BrokerList, $KafKaConf, $TopicConf, $Topic) {
-        $rk = new RdKafka\Producer($KafKaConf);
+        $rk = new \RdKafka\Producer($KafKaConf);
         $rk->addBrokers($BrokerList);
         $this->topic = $rk->newTopic($Topic,$TopicConf);
     }

@@ -1,5 +1,10 @@
 <?php
-namespace Chenruixuan;
+/**
+ * User: chenruixuan
+ * Date: 2017/1/12 下午3:06
+ * Email: www@chenruixuan.com
+ */
+namespace Chenruixuan\Kafka;
 // 通过offset和group来获取消息(必须设置group)
 const KAFKA_OFFSET_STORED = RD_KAFKA_OFFSET_STORED;
 // 从尾部开始获取新的massage
@@ -27,7 +32,7 @@ class KafkaConsumer {
      */
     public function __construct($BrokerList, $KafKaConf, $TopicConf, $Topic) {
 
-        $rk = new RdKafka\Consumer($KafKaConf);
+        $rk = new \RdKafka\Consumer($KafKaConf);
 
         $rk->addBrokers($BrokerList);
 

@@ -1,4 +1,9 @@
 <?php
+/**
+ * User: chenruixuan
+ * Date: 2017/1/12 下午3:06
+ * Email: www@chenruixuan.com
+ */
 namespace Chenruixuan\Kafka;
 class Kafka_Message
 {

@@ -1,8 +1,14 @@
 <?php
+/**
+ * User: chenruixuan
+ * Date: 2017/1/12 下午3:06
+ * Email: www@chenruixuan.com
+ */
 namespace Chenruixuan\Kafka;
 
 // KafKa分区自动随机分配
 use Chenruixuan\Kafka\KafKaConsumer;
+use Chenruixuan\Kafka\KafkaProducer;
 use Chenruixuan\Kafka\Exception\KafkaException;
 const KAFKA_PARTITION_UA = RD_KAFKA_PARTITION_UA;
 
@@ -55,7 +61,7 @@ class Kafka {
      * @return KafKa_Producer
      */
     public function newProducer() {
-        return new KafKaProducer($this->BrokerList, $this->getKafKaConf(), $this->getTopicConf(), $this->Topic);
+        return new KafkaProducer($this->BrokerList, $this->getKafKaConf(), $this->getTopicConf(), $this->Topic);
     }
 
     /**
@@ -63,7 +69,7 @@ class Kafka {
      * @return KafKa_Consumer
      */
     public function newConsumer() {
-        return new KafKaConsumer($this->BrokerList, $this->getKafKaConf(), $this->getTopicConf(), $this->Topic);
+        return new KafkaConsumer($this->BrokerList, $this->getKafKaConf(), $this->getTopicConf(), $this->Topic);
     }
 
     /**
@@ -110,7 +116,7 @@ class Kafka {
      * @return \RdKafka\TopicConf
      */
     private function getTopicConf() {
-        $conf = new RdKafka\TopicConf();
+        $conf = new \RdKafka\TopicConf();
         if ($this->TopicConf) {
             foreach ($this->TopicConf as $k => $v) {
                 $conf->set($k, $v);
@@ -126,7 +132,7 @@ class Kafka {
      */
     private function getKafKaConf() {
 
-        $conf = new RdKafka\Conf();
+        $conf = new \RdKafka\Conf();
         if ($this->KafKaConf) {
 
             foreach ($this->KafKaConf as $k => $v) {
