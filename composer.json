@@ -9,7 +9,7 @@
   ],
   "homepage": "https://github.com/chenruixuan/kafka",
   "license": "MIT",
-  "minimum-stability": "stable",
+
   "authors": [
     {
       "name": "Chenruixuan",

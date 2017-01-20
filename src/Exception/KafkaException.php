@@ -5,6 +5,9 @@
  * Email: www@chenruixuan.com
  */
 namespace Chenruixuan\Kafka\Exception;
+use Exception;
+
 class KafkaException extends \Exception{
-    //
+
+
 }

@@ -6,6 +6,8 @@
  */
 namespace Chenruixuan\Kafka;
 // 通过offset和group来获取消息(必须设置group)
+use Chenruixuan\Kafka\Exception\ErrorCode;
+use Chenruixuan\Kafka\Exception\KafkaException;
 const KAFKA_OFFSET_STORED = RD_KAFKA_OFFSET_STORED;
 // 从尾部开始获取新的massage
 const KAFKA_OFFSET_END = RD_KAFKA_OFFSET_END;
@@ -65,27 +67,6 @@ class KafkaConsumer {
 
 
     /**
-     * 每次获取单条Massage(多用于队列脚本)
-     *
-     * @return null|Kafka_Message
-     * @throws KafKa_Exception_Base
-     */
-    public function consume() {
-        $message = $this->topic->consume($this->partition, $this->timeout * 1000);
-        switch ($message->err) {
-            case RD_KAFKA_RESP_ERR_NO_ERROR:
-                return $message;
-                break;
-            case RD_KAFKA_RESP_ERR__PARTITION_EOF:
-                return null;
-                break;
-            default:
-                throw new KafKa_Exception_Base($message->errstr(), $message->err);
-                break;
-        }
-    }
-
-    /**
      * 批量获取Massage
      *
      * @param int $partition
@@ -99,17 +80,19 @@ class KafkaConsumer {
 
         $retList = array();
 
-        $this->consumerStart($partition, $offset);
+        $this->consumerStart($partition, 0);
         for ($i = 0; $i < $maxSize; $i++) {
-            $message = $this->consume();
+            $message = $this->topic->consume($this->partition, $this->timeout * 1000);
+
             switch ($message->err) {
-                case RD_KAFKA_RESP_ERR_NO_ERROR:
+                case 0:
                     $retList[] = $message;
                     break;
-                case RD_KAFKA_RESP_ERR__PARTITION_EOF:
-                    break 2;
+
                 default:
-                    throw new KafKa_Exception_Base($message->errstr(), $message->err);
+                    $errorCode=new ErrorCode();
+                    throw new KafkaException($errorCode->getError($message->err));
+//                    echo $errorCode->getError($message->err);
                     break;
             }
         }
