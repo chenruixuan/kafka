@@ -8,17 +8,24 @@ use Chenruixuan\Kafka\Kafka;
 require __DIR__ . '/../autoload.php';
 
 ///producer
-/*
+//
+//$kafka=new Kafka("192.168.31.204");
+//$kafka->setTopic("hahaha");
+//$producter=$kafka->newProducer();
+//$producter->setMessage(0,"hahaha");
+
 $kafka=new Kafka("192.168.31.204");
-$kafka->setTopic("test");
-$producter=$kafka->newProducer();
-$producter->setMessage(0,"helloworld");
-*/
-$kafka=new Kafka("192.168.31.204");
-$kafka->setTopic("test");
+
+$kafka->setTopic("xuan");
 $kafka->setGroup("test");
 $consumer=$kafka->newConsumer();
-$rs=$consumer->getMassage(0,10);
+try{
+    $rs=$consumer->getMassage(0,4);
+    var_dump($rs);
+}catch (Exception $e){
+    var_dump($e->getMessage());
+}
+
 
 
 
